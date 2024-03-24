@@ -1,12 +1,26 @@
 import { createBrowserRouter } from 'react-router-dom';
-import App from '../App';
+import HomePage from '../pages/HomePage';
+import ErrorPage from '../pages/ErrorPage';
+import PokemonDetailPage from '../pages/PokemonDetailPage';
+import RootLayout from '../components/Layouts/RootLayout';
 
 import type { RoutesProps } from './routes.types';
 
 const routes: RoutesProps[] = [
   {
     path: '/',
-    element: <App />,
+    element: <RootLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: '/',
+        element: <HomePage />,
+      },
+      {
+        path: '/pokemon/:id',
+        element: <PokemonDetailPage />,
+      },
+    ],
   },
 ];
 
